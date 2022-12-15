@@ -1,14 +1,15 @@
 import axios from "axios";
 
 const Requests = {
-  DAILY_FORM_REQUEST: "http://127.0.0.1:8000/api/v1/medical-daily-form",
-  RED_EVAT_REQUEST: "http://127.0.0.1:8000/api/v1/red-evat",
-  PATIENT_REQUEST: "http://127.0.0.1:8000/api/v1/patient",
-  RECORD_REQUEST: "http://127.0.0.1:8000/api/v1/record",
-  EMPLOYEE_REQUEST: "http://127.0.0.1:8000/api/v1/employee",
-  LOGIN_REQUEST: "http://127.0.0.1:8000/api/v1/auth",
-  PATIENT_FILTER_REQUEST: "http://127.0.0.1:8000/api/v1/patient/filter?",
-  EMPLOYEE_FILTER_REQUEST: "http://127.0.0.1:8000/api/v1/employee/filter?",
+  DAILY_FORM_REQUEST: process.env.REACT_APP_URL + "/api/v1/medical-daily-form",
+  RED_EVAT_REQUEST: process.env.REACT_APP_URL + "/api/v1/red-evat",
+  PATIENT_REQUEST: process.env.REACT_APP_URL + "/api/v1/patient",
+  RECORD_REQUEST: process.env.REACT_APP_URL + "/api/v1/record",
+  EMPLOYEE_REQUEST: process.env.REACT_APP_URL + "/api/v1/employee",
+  LOGIN_REQUEST: process.env.REACT_APP_URL + "/api/v1/auth",
+  PATIENT_FILTER_REQUEST: process.env.REACT_APP_URL + "/api/v1/patient/filter?",
+  EMPLOYEE_FILTER_REQUEST:
+    process.env.REACT_APP_URL + "/api/v1/employee/filter?",
 };
 
 const funcErrorWrapper = (func) => {

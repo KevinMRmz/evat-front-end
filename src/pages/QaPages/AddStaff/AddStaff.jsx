@@ -11,7 +11,7 @@ const AddStaff = () => {
   const { register, handleSubmit } = useForm();
   const { AddStaff } = useFetch();
   const { cleanMsg, errorMsg, setMsg, Message } = useMessage();
-  const { display, setDisplay } = useState(false);
+  const [display, setDisplay] = useState(false);
 
   const [role, setRole] = useState("nurse");
 

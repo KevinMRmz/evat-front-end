@@ -9,7 +9,7 @@ export default function QaHeader() {
         <div>
           <div>
             <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Coat_of_arms_of_Chihuahua.svg/1200px-Coat_of_arms_of_Chihuahua.svg.png"
+              src="./chihuahua.png"
               alt="Imagen del escudo del estado de Chihuahua"
               className="img-header"
             />

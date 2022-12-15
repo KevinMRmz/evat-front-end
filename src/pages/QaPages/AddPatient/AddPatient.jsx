@@ -10,7 +10,7 @@ const AddPatient = () => {
   const { register, handleSubmit } = useForm();
   const { AddPatientRequest } = useFetch();
   const { cleanMsg, errorMsg, setMsg, Message } = useMessage();
-  const { display, setDisplay } = useState(false);
+  const [display, setDisplay] = useState(false);
 
   const onSubmit = async (data) => {
     cleanMsg();

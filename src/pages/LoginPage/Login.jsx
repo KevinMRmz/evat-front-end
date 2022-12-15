@@ -9,7 +9,7 @@ import { useState } from "react";
 
 const Login = () => {
   const { cleanMsg, setMsg, errorMsg, Message } = useMessage();
-  const { display, setDisplay } = useState(false);
+  const [display, setDisplay] = useState(false);
 
   const { register, handleSubmit } = useForm();
 
@@ -31,7 +31,7 @@ const Login = () => {
     <div className="login-page">
       <div className="login-container">
         <img
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Coat_of_arms_of_Chihuahua.svg/1200px-Coat_of_arms_of_Chihuahua.svg.png"
+          src="./chihuahua.png"
           alt="Imagen del escudo del estado de Chihuahua"
           className="login-img mb-5"
         />
