@@ -1,34 +1,45 @@
 import React from "react";
 import "./header.css";
+import logo from "./chihuahua.png";
+import { Outlet, Link } from "react-router-dom";
 
 export default function NurseHeader() {
   return (
-    <div className="header">
-      <div>
+    <>
+      <div className="header">
         <div>
-          <img
-            src="./chihuahua.png"
-            alt="Imagen del escudo del estado de Chihuahua"
-            className="img-header"
-          />
+          <div>
+            <img
+              src={logo}
+              alt="Imagen del escudo del estado de Chihuahua"
+              className="img-header"
+            />
+          </div>
         </div>
-      </div>
-      <div className="header-sub-container">
-        <div className="mr-5 pointer">
-          <ion-icon name="home"></ion-icon>
+        <div className="header-sub-container">
+          <div className="mr-5 pointer">
+            <Link to="/nurse/main">
+              <ion-icon name="home"></ion-icon>
+            </Link>
+          </div>
+          <div className="mr-5 text-center uppercase lp-5 pointer">
+            Formulario EVAT
+          </div>
+          <div className="mr-5 pointer">
+            <Link to="/nurse/notifications">
+              <ion-icon name="mail"></ion-icon>
+            </Link>
+          </div>
         </div>
-        <div className="mr-5 text-center uppercase lp-5 pointer">
-          Formulario EVAT
-        </div>
-        <div className="mr-5 pointer">
-          <ion-icon name="cog"></ion-icon>
-        </div>
-      </div>
-      <div>
         <div>
-          <ion-icon name="exit"></ion-icon>
+          <div>
+            <Link to="/">
+              <ion-icon name="exit"></ion-icon>
+            </Link>
+          </div>
         </div>
       </div>
-    </div>
+      <Outlet></Outlet>
+    </>
   );
 }
