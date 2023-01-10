@@ -1,17 +1,12 @@
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
-
 html {
   box-sizing: border-box;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 *,
 *::after,
 *::before {
+  font-family: "Montserrat", sans-serif;
   box-sizing: inherit;
   padding: 0;
   margin: 0;
@@ -22,13 +17,24 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.form {
+.login-form {
   border: none;
   padding: 10px 20px;
   background-color: none;
   outline: none;
   border-bottom: 2px #000 solid;
   font-size: 1em;
+}
+
+.form {
+  width: 80%;
+  padding: 10px;
+  outline: none;
+  font-size: 1.3em;
+  font-weight: 500;
+  border: 1px solid #0004;
+  background-color: transparent;
+  border-radius: 5px;
 }
 
 .btn {
@@ -56,6 +62,14 @@ body {
   align-items: center;
 }
 
+.nowrap {
+  flex-wrap: nowrap;
+}
+
+.wrap {
+  flex-wrap: wrap;
+}
+
 .mb-5 {
   margin-bottom: 15px;
 }
@@ -72,6 +86,14 @@ body {
   margin: 5px;
 }
 
+.m-4 {
+  margin: 4px;
+}
+
+.m-3 {
+  margin: 3px;
+}
+
 .lp-5 {
   letter-spacing: 5px;
 }
@@ -82,6 +104,46 @@ body {
 
 .bold {
   font-weight: bold;
+}
+
+.font-weight-100 {
+  font-weight: 100;
+}
+
+.font-weight-200 {
+  font-weight: 200;
+}
+
+.font-weight-300 {
+  font-weight: 300;
+}
+
+.font-weight-400 {
+  font-weight: 400;
+}
+
+.font-weight-500 {
+  font-weight: 500;
+}
+
+.font-weight-600 {
+  font-weight: 600;
+}
+
+.font-weight-700 {
+  font-weight: 700;
+}
+
+.font-weight-800 {
+  font-weight: 800;
+}
+
+.font-weight-900 {
+  font-weight: 900;
+}
+
+.font-size-small {
+  font-size: 1.1em;
 }
 
 .text-center {
@@ -112,8 +174,228 @@ body {
   padding: 1px;
 }
 
+.w-100 {
+  width: 100%;
+}
+
+.w-90 {
+  width: 90%;
+}
+
+.w-80 {
+  width: 80%;
+}
+
+.w-70 {
+  width: 70%;
+}
+
+.w-60 {
+  width: 60%;
+}
+
+.w-50 {
+  width: 50%;
+}
+
+.vw-100 {
+  width: 100vw;
+}
+
+.vw-90 {
+  width: 90vw;
+}
+
+.vw-80 {
+  width: 80vw;
+}
+
+.vw-70 {
+  width: 70vw;
+}
+
+.vw-60 {
+  width: 60vw;
+}
+
+.vw-50 {
+  width: 50vw;
+}
+
+.w-40 {
+  width: 40%;
+}
+
+.w-30 {
+  width: 30%;
+}
+
+.h-100 {
+  height: 100%;
+}
+
+.h-90 {
+  height: 90%;
+}
+
+.h-80 {
+  height: 80%;
+}
+
+.h-70 {
+  height: 70%;
+}
+
+.h-60 {
+  height: 60%;
+}
+
+.h-50 {
+  height: 50%;
+}
+
+.h-40 {
+  height: 40%;
+}
+
+.h-30 {
+  height: 30%;
+}
+
+.h-20 {
+  height: 20%;
+}
+
+.h-10 {
+  height: 10%;
+}
+
+.vh-100 {
+  height: 100vh;
+}
+
+.vh-90 {
+  height: 90vh;
+}
+
+.vh-80 {
+  height: 80vh;
+}
+
+.vh-70 {
+  height: 70vh;
+}
+
+.vh-60 {
+  height: 60vh;
+}
+
+.h-50 {
+  height: 50vh;
+}
+
+.h-40 {
+  height: 40vh;
+}
+
+.h-30 {
+  height: 30vh;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-evenly {
+  justify-content: space-evenly;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.no-decoration {
+  text-decoration: none;
+}
+
+.text-black {
+  color: #000;
+}
+
+.danger-text {
+  color: #f00;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.overflow-y-scroll {
+  overflow-y: scroll;
+}
+
+.text-white {
+  color: #fff;
+}
+
+.text-blue {
+  color: #00f;
+}
+
+.text-opacity {
+  color: #0009;
+}
+
+.font-size-subtitles {
+  font-size: 1.4em;
+}
+
+.font-size-modal {
+  font-size: 1.5em;
+}
+
+.list-style-type-none {
+  list-style-type: none;
+}
+
+.title-container-border {
+  border-bottom: 1px solid #0005;
+}
+
+.position-absolute {
+  position: absolute;
+}
+
+.position-relative {
+  position: relative;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.btn-danger {
+  background-color: #f00;
+}
+
+.bg-orange {
+  background-color: #ff8000;
+}
+
+.bg-green {
+  background-color: #0f0;
+}
+
 .alert-msg {
   color: #f00;
   font-size: 0.8em;
   font-weight: bold;
+}
+
+.form2:focus {
+  border: 2px solid #0af8;
 }

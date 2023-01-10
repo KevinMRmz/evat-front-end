@@ -1,0 +1,57 @@
+.card-shadow {
+  background-color: #fff;
+
+  border-bottom: 1px solid #0009;
+  height: 60px;
+  transition: 0.5s;
+  font-size: 0.9em;
+}
+
+.name-color {
+  color: #00f;
+}
+
+.age-color {
+  color: #f90;
+}
+
+.email-color {
+  color: #0f9;
+}
+
+.type-color {
+  color: #f00;
+}
+
+.delete,
+.update,
+.watch {
+  background-color: transparent;
+  transition: 0.5s;
+}
+
+.border-icon {
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.border-icon {
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.card-shadow:hover {
+  background-color: #dcdde1;
+}
+
+.delete:hover {
+  background-color: #f00;
+}
+
+.update:hover {
+  background-color: #00f;
+}
+
+.watch:hover {
+  background-color: #0f0;
+}
