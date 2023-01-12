@@ -1,0 +1,55 @@
+.background-img-user {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-image: url(./chihuahua.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  z-index: -1;
+  opacity: 0.2;
+}
+
+.icon-size {
+  border: 50%;
+  font-size: 1.4em;
+  transition: 0.5s;
+}
+
+.edit {
+  color: #00f;
+}
+
+.add-nurse {
+  color: #ff0;
+}
+
+.remove-nurse {
+  color: #7d2181;
+}
+
+.delete-user {
+  color: #f00;
+}
+
+.redirect-home {
+  position: absolute;
+  bottom: 40px;
+  right: 40px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  font-size: 1.7em;
+  transition: 0.5s;
+}
+
+.icon-size:hover {
+  color: #0008;
+}
+
+.redirect-home:hover {
+  transform: scale(1.3, 1.3);
+}

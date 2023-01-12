@@ -1,9 +1,13 @@
-import Home from "./Home/Home";
+import SearchStaff from "./SearchStaff/Home";
 import AddPatient from "./AddPatient/AddPatient";
 import AddStaff from "./AddStaff/AddStaff";
+import SearchPatient from "./SearchPatient/SearchPatient";
+import History from "./History/History";
 
 const QaPages = {
-  Home,
+  SearchStaff,
+  SearchPatient,
+  History,
   AddPatient,
   AddStaff,
 };
