@@ -3,7 +3,7 @@ import "./header.css";
 import logo from "./chihuahua.png";
 import { Outlet, Link } from "react-router-dom";
 
-export default function NurseHeader() {
+export default function DoctorHeader() {
   return (
     <>
       <div className="header">
@@ -18,15 +18,15 @@ export default function NurseHeader() {
         </div>
         <div className="header-sub-container">
           <div className="mr-5 pointer">
-            <Link to="/nurse/">
+            <Link to="/doctor/">
               <ion-icon name="home"></ion-icon>
             </Link>
           </div>
           <div className="mr-5 text-center uppercase lp-5 pointer">
-            EVAT Form
+            Notifications
           </div>
           <div className="mr-5 pointer">
-            <Link to="/nurse/notifications">
+            <Link to="/doctor/record-notifications">
               <ion-icon name="mail"></ion-icon>
             </Link>
           </div>

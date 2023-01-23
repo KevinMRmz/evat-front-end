@@ -8,7 +8,7 @@ export default function QaHeader() {
       <div className="header">
         <div>
           <div>
-            <Link to="/admin/staff-search">
+            <Link to="/admin/">
               <ion-icon name="folder"></ion-icon>
             </Link>
           </div>
@@ -46,6 +46,7 @@ export default function QaHeader() {
           </div>
         </div>
       </div>
+      <span className="background-img-user" />
       <Outlet></Outlet>
     </>
   );

@@ -1,44 +1,32 @@
 import React, { useState, useContext, useEffect } from "react";
 import { ErrorMessageContext } from "../../contexts/errorMessageContext";
+import useEvatAction from "../../hooks/Actions/useFormActions";
 import EvatAlgorithm from "../../evat-algorithm";
 import Components from "../../components";
 import { useForm } from "react-hook-form";
 import Select from "react-select";
 import { useParams } from "react-router-dom";
-import useAlert from "../../hooks/useAlert";
-import useFetch from "../../hooks/useFetch";
 
 const EvatPage = () => {
   const { handleSubmit, register, watch, setValue } = useForm();
   const { id } = useParams();
-  const { confirmAlertErrorSuccessMsg } = useAlert();
-  const { postEvatForm } = useFetch();
   const [temperature, setTemperature] = useState("36");
   const [rightPupil, setRightPupil] = useState("R");
   const [leftPupil, setLeftPupil] = useState("R");
   const { errorMessage, cleanMessage } = useContext(ErrorMessageContext);
   const { heartRateTable, breathingRateTable, resultRateLevel } = EvatAlgorithm;
-
-  const onSubmit = confirmAlertErrorSuccessMsg(async (data) => {
-    await postEvatForm({
-      ...data,
-      idPatient: id,
-      temperature,
-      rightPupil,
-      leftPupil,
-    });
-  }, "Are you sure to send this Evat form?");
+  const { createEvatForm } = useEvatAction();
 
   useEffect(() => cleanMessage(), []);
 
   setValue(
     "cardio",
-    resultRateLevel(15, parseInt(watch("FC")) || 0, heartRateTable)
+    resultRateLevel(4, parseInt(watch("FC")) || 0, heartRateTable)
   );
 
   setValue(
     "resp",
-    resultRateLevel(15, parseInt(watch("FR")) || 0, breathingRateTable)
+    resultRateLevel(4, parseInt(watch("FR")) || 0, breathingRateTable)
   );
 
   const rightPupilOptions = [
@@ -69,7 +57,15 @@ const EvatPage = () => {
     <div className="w-100 flex-center vh-100">
       <span className="background-img-user" />
       <form
-        onSubmit={handleSubmit(onSubmit)}
+        onSubmit={handleSubmit((data) =>
+          createEvatForm({
+            ...data,
+            idPatient: id,
+            temperature,
+            rightPupil,
+            leftPupil,
+          })
+        )}
         className="w-80 h-100 flex flex-column align-items-center justify-evenly"
       >
         <div className="title-container-patients w-100">

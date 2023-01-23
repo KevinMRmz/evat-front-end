@@ -3,13 +3,13 @@ import useFetch from "../useFetch";
 import Messages from "../../constants/alertMessages";
 import { useNavigate } from "react-router-dom";
 import { StaffContext } from "../../contexts/staffContext";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 const useStaffActions = () => {
   const { staff, setStaffInfo } = useContext(StaffContext);
   const { QuestionMessages, ResponseMessages } = Messages;
   const { confirmAlertSuccessMsg } = useAlert();
-  const { updateEmployee, deleteEmployee } = useFetch();
+  const { updateEmployee, deleteEmployee, changePassword } = useFetch();
   const navigate = useNavigate();
 
   const updateStaff = confirmAlertSuccessMsg(
@@ -25,18 +25,29 @@ const useStaffActions = () => {
 
   const deleteEmployeeRequest = confirmAlertSuccessMsg(async (id) => {
     await deleteEmployee(id);
-    navigate("/admin/staff-search");
+    navigate("/admin/");
   });
 
-  return { updateStaff, deleteEmployeeRequest };
+  const newPassword = confirmAlertSuccessMsg(
+    async ({ password, confirmPassword }, id) => {
+      if (password !== confirmPassword) {
+        throw new Error("Passwords are different");
+      }
+
+      await changePassword({ password }, id);
+    }
+  );
+
+  return { updateStaff, deleteEmployeeRequest, newPassword };
 };
 
-export const useCreateEmployee = () => {
+export const useEmployee = () => {
   const { QuestionMessages, ResponseMessages } = Messages;
-  const { confirmAlertErrorSuccessMsg } = useAlert();
-  const { AddStaff } = useFetch();
+  const { confirmAlertErrorSuccessMsg, waitingResponseAlert } = useAlert();
+  const { AddStaff, getEmployeesFilter } = useFetch();
+  const [employees, setEmployees] = useState([]);
 
-  const createPatient = confirmAlertErrorSuccessMsg(
+  const createEmployee = confirmAlertErrorSuccessMsg(
     async (data) => {
       await AddStaff({ ...data });
     },
@@ -44,7 +55,12 @@ export const useCreateEmployee = () => {
     ResponseMessages.EMPLOYEE_CREATED
   );
 
-  return createPatient;
+  const searchEmployees = waitingResponseAlert(async (query) => {
+    const result = await getEmployeesFilter(query);
+    setEmployees(result);
+  });
+
+  return { createEmployee, searchEmployees, employees };
 };
 
 export default useStaffActions;

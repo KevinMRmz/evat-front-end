@@ -4,6 +4,7 @@ import Messages from "../../constants/alertMessages";
 import { useContext } from "react";
 import { PatientContext } from "../../contexts/patientContext";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const usePatientActions = () => {
   const { QuestionMessages, ResponseMessages } = Messages;
@@ -59,10 +60,11 @@ const usePatientActions = () => {
   };
 };
 
-export const useCreatePatient = () => {
+export const usePatient = () => {
   const { QuestionMessages, ResponseMessages } = Messages;
   const { confirmAlertErrorSuccessMsg, waitingResponseAlert } = useAlert();
   const { AddPatientRequest, getPatientsFilter } = useFetch();
+  const [patients, setPatients] = useState([]);
 
   const createPatient = confirmAlertErrorSuccessMsg(
     async (data) => {
@@ -74,10 +76,10 @@ export const useCreatePatient = () => {
 
   const searchPatients = waitingResponseAlert(async (query) => {
     const result = await getPatientsFilter(query);
-    return result;
+    setPatients(result);
   });
 
-  return { createPatient, searchPatients };
+  return { createPatient, searchPatients, patients };
 };
 
 export default usePatientActions;

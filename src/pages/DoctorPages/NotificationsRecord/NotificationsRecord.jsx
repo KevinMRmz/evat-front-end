@@ -4,10 +4,10 @@ import useFetchDataById from "../../../hooks/useFetchDataById";
 import Components from "../../../components";
 import Modal from "react-responsive-modal";
 
-const Notifications = () => {
-  const idNurse = "63b1f362e650d1d3e3dfe5ae";
-  const { nurseNotifications } = useFetch();
-  const { data, setData } = useFetchDataById(nurseNotifications, idNurse);
+const NotificationsRecord = () => {
+  const idDoctor = "63b59a69775e132b0acec6e6";
+  const { doctorNotifications } = useFetch();
+  const { data, setData } = useFetchDataById(doctorNotifications, idDoctor);
   const [open, setOpen] = useState(false);
   const [notification, setNotification] = useState({});
 
@@ -21,32 +21,38 @@ const Notifications = () => {
     <>
       <div className="flex justify-center w-90 m-5">
         <div className="w-80 m-5 title-container-patients">
-          <h2>Your Notifications</h2>
+          <h2>Notification Record</h2>
         </div>
       </div>
       <div className="w-100 flex-center mt-5">
         <div className="flex w-90 vh-70 flex-column overflow-y-scroll">
-          {data.map((result) => (
-            <div
-              onClick={() => {
-                setNotification(result);
-                setOpen(true);
-              }}
-            >
-              <Components.NotificationCard notification={result} />
-            </div>
-          ))}
+          {data.length !== 0 ? (
+            data.map((result) => (
+              <div
+                onClick={() => {
+                  setNotification(result);
+                  setOpen(true);
+                }}
+              >
+                <Components.NotificationCard notification={result} />
+              </div>
+            ))
+          ) : (
+            <h2 className="danger-text m-5 text-center">
+              No Notifications where found
+            </h2>
+          )}
         </div>
       </div>
       <Modal open={open} onClose={() => setOpen(false)}>
         <Components.NotificationModalInfo
           notification={notification}
           updateNotifications={updateNotifications}
-          action={"DELETE"}
+          action={"NOT_CONFIRMED"}
         />
       </Modal>
     </>
   );
 };
 
-export default Notifications;
+export default NotificationsRecord;

@@ -1,9 +1,9 @@
 .background-img-user {
   position: absolute;
-  top: 0;
+  top: 15vh;
   left: 0;
   width: 100%;
-  height: 100vh;
+  height: 85vh;
   background-image: url(./chihuahua.png);
   background-repeat: no-repeat;
   background-position: center;

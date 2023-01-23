@@ -15,15 +15,19 @@ import StaffHeader from "./SinglePageComponents/StaffHeader";
 import NursePatients from "./ModalStaff/NursePatients";
 import UpdateStaff from "./ModalStaff/UpdateStaff";
 import RecordModal from "./ModalPatientInfo/RecordModal";
-import NotificationModal from "./ModalPatientInfo/NotificationModal";
+import NotificationCard from "./ResultsCards/NotificationCard";
+import NotificationModalInfo from "./ModalPatientInfo/NotificationModalInfo";
+import RecordCard from "./ResultsCards/RecordCard";
 
 const Components = {
+  RecordCard,
   StaffSearch,
   PatientSearch,
   PatientResultCard,
   StaffResultCard,
   LoadingScreen,
   PatientForm,
+  NotificationCard,
   ModalPatientUpdate,
   ModalPatientNurses,
   Message,
@@ -34,8 +38,8 @@ const Components = {
   StaffHeader,
   NursePatients,
   UpdateStaff,
-  NotificationModal,
   RecordModal,
+  NotificationModalInfo,
 };
 
 export default Components;

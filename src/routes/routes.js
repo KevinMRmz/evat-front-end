@@ -7,30 +7,68 @@ import QaPages from "../pages/QaPages";
 import NursePages from "../pages/NursePages";
 import PatientProvider from "../contexts/patientContext";
 import StaffProvider from "../contexts/staffContext";
+import DoctorPages from "../pages/DoctorPages";
+import EvatForm from "../pages/EvatForms/EvatForms";
 import EvatPage from "../pages/EvatPage/EvatPage";
+import NotificationPage from "../pages/NotificationPage/NotificationPage";
+import ErrorPages from "../pages/ErrorPages";
+import Roles from "../constants/roles";
+import Auth from "../auth/Auth";
 
 const Router = () => {
   let routes = useRoutes([
     {
       path: "nurse",
-      element: <Headers.NurseHeader />,
+      element: (
+        <Auth authorized={Roles.NURSE}>
+          <Headers.NurseHeader />
+        </Auth>
+      ),
       children: [
         {
-          path: "main",
+          index: "/",
           element: <NursePages.Home />,
         },
         {
           path: "notifications",
           element: <NursePages.Notifications />,
         },
+        {
+          path: "patient/:id",
+          element: (
+            <PatientProvider>
+              <SinglePatient />
+            </PatientProvider>
+          ),
+        },
+        {
+          path: "staff/:id",
+          element: (
+            <StaffProvider>
+              <StaffPage />
+            </StaffProvider>
+          ),
+        },
+        {
+          path: "evat-record/:id",
+          element: <EvatForm />,
+        },
+        {
+          path: "notification/:id",
+          element: <NotificationPage />,
+        },
       ],
     },
     {
       path: "admin",
-      element: <Headers.QaHeader />,
+      element: (
+        <Auth authorized={Roles.ADMIN}>
+          <Headers.QaHeader />
+        </Auth>
+      ),
       children: [
         {
-          path: "staff-search",
+          index: "/",
           element: <QaPages.SearchStaff />,
         },
         {
@@ -49,29 +87,79 @@ const Router = () => {
           path: "create-staff",
           element: <QaPages.AddStaff />,
         },
+        {
+          path: "patient/:id",
+          element: (
+            <PatientProvider>
+              <SinglePatient />
+            </PatientProvider>
+          ),
+        },
+        {
+          path: "staff/:id",
+          element: (
+            <StaffProvider>
+              <StaffPage />
+            </StaffProvider>
+          ),
+        },
+        {
+          path: "notification/:id",
+          element: <NotificationPage />,
+        },
+        {
+          path: "evat-record/:id",
+          element: <EvatForm />,
+        },
       ],
     },
     {
-      path: "patient/:id",
+      path: "doctor",
       element: (
-        <PatientProvider>
-          <SinglePatient />
-        </PatientProvider>
+        <Auth authorized={Roles.DOCTOR}>
+          <Headers.DoctorHeader />
+        </Auth>
       ),
+      children: [
+        {
+          index: "/",
+          element: <DoctorPages.CurrentNotifications />,
+        },
+        {
+          path: "record-notifications",
+          element: <DoctorPages.NotificationsRecord />,
+        },
+        {
+          path: "patient/:id",
+          element: (
+            <PatientProvider>
+              <SinglePatient />
+            </PatientProvider>
+          ),
+        },
+        {
+          path: "staff/:id",
+          element: (
+            <StaffProvider>
+              <StaffPage />
+            </StaffProvider>
+          ),
+        },
+        {
+          path: "evat-record/:id",
+          element: <EvatForm />,
+        },
+      ],
     },
     {
       path: "evat-form/:id",
       element: <EvatPage />,
     },
-    {
-      path: "staff/:id",
-      element: (
-        <StaffProvider>
-          <StaffPage />
-        </StaffProvider>
-      ),
-    },
+    { path: "/forbidden", element: <ErrorPages.ForbiddenPage /> },
+    { path: "/not-found", element: <ErrorPages.NotFoundPage /> },
+    { path: "/not-connection", element: <ErrorPages.NotConnectionPage /> },
     { path: "/", element: <Login /> },
+    { path: "*", element: <ErrorPages.NotFoundPage /> },
   ]);
 
   return routes;

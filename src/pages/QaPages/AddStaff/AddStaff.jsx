@@ -1,12 +1,12 @@
 import React, { useContext, useEffect } from "react";
 import { ErrorMessageContext } from "../../../contexts/errorMessageContext";
-import { useCreateEmployee } from "../../../hooks/Actions/useStaffActions";
+import { useEmployee } from "../../../hooks/Actions/useStaffActions";
 import Components from "../../../components";
 import "./add-staff.css";
 
 const AddStaff = () => {
   const { errorMessage, cleanMessage } = useContext(ErrorMessageContext);
-  const createEmployee = useCreateEmployee();
+  const { createEmployee } = useEmployee();
 
   useEffect(() => cleanMessage(), []);
 
