@@ -6,7 +6,7 @@ const Auth = ({ children, authorized }) => {
   const { user } = useContext(UserContext);
 
   if (!user.auth) {
-    return <ErrorPages.ForbiddenPage />;
+    return <ErrorPages.ForbiddenPageNotLogin />;
   }
 
   if (user.role !== authorized) {

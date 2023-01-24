@@ -5,8 +5,9 @@ export const ErrorPagesTitles = {
 };
 
 export const ErrorPagesSubtitles = {
-  FORBIDDEN_ERROR:
+  FORBIDDEN_ERROR_NOT_LOGIN:
     "You are not authorized to see this resource, please login first",
+  FORBIDDEN_ERROR: "You are not authorized to see this resource",
   ERROR_404: "Resource not found",
   NOT_CONNECTION: "No internet connection",
 };
