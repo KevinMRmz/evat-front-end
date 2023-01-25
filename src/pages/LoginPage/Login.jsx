@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { ErrorMessageContext } from "../../contexts/errorMessageContext";
 import useAuthActions from "../../hooks/Actions/useAuthActions";
@@ -6,9 +6,10 @@ import Components from "../../components";
 import "./login.css";
 
 const Login = () => {
-  const { errorMessage } = useContext(ErrorMessageContext);
+  const { errorMessage, cleanMessage } = useContext(ErrorMessageContext);
   const { register, handleSubmit } = useForm();
   const { login } = useAuthActions();
+  useEffect(() => cleanMessage(), []);
 
   return (
     <div className="login-page">

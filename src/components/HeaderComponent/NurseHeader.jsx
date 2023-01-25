@@ -18,12 +18,12 @@ export default function NurseHeader() {
         </div>
         <div className="header-sub-container">
           <div className="mr-5 pointer">
-            <Link to="/nurse/main">
+            <Link to="/nurse/">
               <ion-icon name="home"></ion-icon>
             </Link>
           </div>
           <div className="mr-5 text-center uppercase lp-5 pointer">
-            Formulario EVAT
+            EVAT Form
           </div>
           <div className="mr-5 pointer">
             <Link to="/nurse/notifications">
@@ -39,6 +39,7 @@ export default function NurseHeader() {
           </div>
         </div>
       </div>
+      <span className="background-img-user" />
       <Outlet></Outlet>
     </>
   );

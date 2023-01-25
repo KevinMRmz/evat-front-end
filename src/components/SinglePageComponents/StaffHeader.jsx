@@ -2,10 +2,12 @@ import useStaffActions from "../../hooks/Actions/useStaffActions";
 import React, { useState } from "react";
 import Modal from "react-responsive-modal";
 import Components from "..";
+import ChangePassword from "../ModalStaff/ChangePassword";
 
 const StaffHeader = ({ staff }) => {
   const [updateModal, setUpdateModal] = useState(false);
   const [patientModal, setPatientModal] = useState(false);
+  const [changePasswordModal, setChangePasswordModal] = useState(false);
   const { deleteEmployeeRequest } = useStaffActions();
 
   return (
@@ -33,7 +35,7 @@ const StaffHeader = ({ staff }) => {
       <div>
         <span
           className="mr-5 pointer icon-size"
-          onClick={() => deleteEmployeeRequest(staff.id)}
+          onClick={() => setChangePasswordModal(true)}
         >
           <ion-icon name="unlock"></ion-icon>
         </span>
@@ -52,6 +54,12 @@ const StaffHeader = ({ staff }) => {
       </Modal>
       <Modal open={patientModal} onClose={() => setPatientModal(false)}>
         <Components.NursePatients idNurse={staff.id} />
+      </Modal>
+      <Modal
+        open={changePasswordModal}
+        onClose={() => setChangePasswordModal(false)}
+      >
+        <ChangePassword id={staff.id} />
       </Modal>
     </div>
   );

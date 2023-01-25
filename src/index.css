@@ -290,6 +290,10 @@ body {
   height: 60vh;
 }
 
+.vh-50 {
+  height: 50vh;
+}
+
 .h-50 {
   height: 50vh;
 }
@@ -362,6 +366,10 @@ body {
   list-style-type: none;
 }
 
+.overflow-x-hidden {
+  overflow-x: hidden;
+}
+
 .title-container-border {
   border-bottom: 1px solid #0005;
 }
@@ -378,6 +386,18 @@ body {
   overflow: hidden;
 }
 
+.font-size-eye {
+  font-size: 1.5em;
+}
+
+.color-red {
+  color: #f00;
+}
+
+.color-blue {
+  color: #00f;
+}
+
 .btn-danger {
   background-color: #f00;
 }
@@ -388,6 +408,13 @@ body {
 
 .bg-green {
   background-color: #0f0;
+}
+
+.opacity-9 {
+  opacity: 0.9;
+}
+.opacity-5 {
+  opacity: 0.5;
 }
 
 .alert-msg {

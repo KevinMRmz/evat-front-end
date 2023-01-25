@@ -1,18 +1,9 @@
-import React, { useState } from "react";
+import { usePatient } from "../../../hooks/Actions/usePatientActions";
 import { Link } from "react-router-dom";
 import Components from "../../../components";
-import useFetch from "../../../hooks/useFetch";
-import useAlert from "../../../hooks/useAlert";
 
 const SearchPatient = () => {
-  const [patientResults, setPatientResults] = useState([]);
-  const { getPatientsFilter } = useFetch();
-  const { waitingResponseAlert } = useAlert();
-
-  const searchPatients = waitingResponseAlert(async (query) => {
-    const result = await getPatientsFilter(query);
-    setPatientResults([...result]);
-  });
+  const { searchPatients, patients } = usePatient();
 
   return (
     <div className="w-100 vh-80 flex">
@@ -30,9 +21,9 @@ const SearchPatient = () => {
             <h2 className="m-5">Results</h2>
           </div>
           <div className="w-100 h-90 overflow-y-scroll">
-            {patientResults.map((result) => (
+            {patients.map((result) => (
               <Link
-                to={`/patient/${result._id}`}
+                to={`/admin/patient/${result._id}`}
                 className="no-decoration text-black"
               >
                 <Components.PatientResultCard

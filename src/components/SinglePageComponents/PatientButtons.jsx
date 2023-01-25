@@ -1,23 +1,27 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import Modal from "react-responsive-modal";
-import Components from "..";
+import { UserContext } from "../../contexts/userContext";
 
 const PatientButtons = ({ id }) => {
   const navigate = useNavigate();
-
-  const [recordModal, setRecordModal] = useState(false);
-  const [notificationModal, setNotificationModal] = useState(false);
+  const { user } = useContext(UserContext);
 
   return (
     <div className="flex justify-evenly w-100">
       <button
         className="btn w-30 bg-orange"
-        onClick={() => setNotificationModal(true)}
+        onClick={() =>
+          navigate(`/${user.role.toLowerCase()}/notification/${id}`)
+        }
       >
         Send Notification
       </button>
-      <button className="btn w-30" onClick={() => setRecordModal(true)}>
+      <button
+        className="btn w-30"
+        onClick={() =>
+          navigate(`/${user.role.toLowerCase()}/evat-record/${id}`)
+        }
+      >
         Patient Record
       </button>
       <button
@@ -26,19 +30,6 @@ const PatientButtons = ({ id }) => {
       >
         Evat Form
       </button>
-
-      <Modal open={recordModal} onClose={() => setRecordModal(false)}>
-        <Components.RecordModal id={id} />
-      </Modal>
-      <Modal
-        open={notificationModal}
-        onClose={() => setNotificationModal(false)}
-      >
-        <Components.NotificationModal
-          idPatient={id}
-          idTransmitter={"63b1f362e650d1d3e3dfe5ae"}
-        />
-      </Modal>
     </div>
   );
 };

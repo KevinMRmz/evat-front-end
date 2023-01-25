@@ -1,12 +1,12 @@
 import React, { useContext, useEffect } from "react";
 import Components from "../../../components";
 import { ErrorMessageContext } from "../../../contexts/errorMessageContext";
-import { useCreatePatient } from "../../../hooks/Actions/usePatientActions";
+import { usePatient } from "../../../hooks/Actions/usePatientActions";
 import "./add-patient.css";
 
 const AddPatient = () => {
   const { errorMessage, cleanMessage } = useContext(ErrorMessageContext);
-  const { createPatient } = useCreatePatient();
+  const { createPatient } = usePatient();
 
   useEffect(() => cleanMessage(), []);
 

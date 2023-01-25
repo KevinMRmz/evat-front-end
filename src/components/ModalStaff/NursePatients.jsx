@@ -22,7 +22,7 @@ const NursePatients = ({ idNurse }) => {
           ) : (
             data.map((patient) => (
               <Link
-                to={`/patient/${patient._id}`}
+                to={`/admin/patient/${patient._id}`}
                 className="no-decoration text-black"
               >
                 <Components.PatientResultCard patient={patient} />

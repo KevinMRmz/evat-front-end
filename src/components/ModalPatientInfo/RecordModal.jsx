@@ -1,5 +1,6 @@
 import React from "react";
 import useFetchDataById from "../../hooks/useFetchDataById";
+import Components from "..";
 import useFetch from "../../hooks/useFetch";
 import { Link } from "react-router-dom";
 
@@ -20,8 +21,8 @@ const RecordModal = ({ id }) => {
             </h2>
           ) : (
             data.map((record) => (
-              <Link to={`/login`} className="no-decoration text-black">
-                <h3>Record</h3>
+              <Link to={`/`} className="no-decoration text-black">
+                <Components.RecordCard record={record} />
               </Link>
             ))
           )}

@@ -19,6 +19,7 @@ const rateLevel = (freq, normal, mind, moderate, severe) => {
   else if (range(mind, freq)) return 1;
   else if (range(moderate, freq)) return 2;
   else if (range(severe, freq, true)) return 3;
+  else return 0;
   throw new Error(
     "frequency provided did not match with any of the given ranges"
   );

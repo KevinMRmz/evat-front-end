@@ -60,10 +60,18 @@ const useFetch = () => {
     return data.result;
   });
 
-  // Get all patient notifications
+  // Get all doctor notifications
   const doctorNotifications = funcErrorWrapper(async (idDoctor) => {
     const { data } = await axios.get(
       Requests.DOCTOR_NOTIFICATIONS_REQUEST + idDoctor
+    );
+    return data.result;
+  });
+
+  // Get all new doctor notifications
+  const newDoctorNotifications = funcErrorWrapper(async (idDoctor) => {
+    const { data } = await axios.get(
+      Requests.NEW_DOCTOR_NOTIFICATIONS + idDoctor
     );
     return data.result;
   });
@@ -130,6 +138,14 @@ const useFetch = () => {
     return data.result;
   });
 
+  // POST request to change password
+  const changePassword = funcErrorWrapper(async (info, id) => {
+    const { data } = await axios.post(Requests.CHANGE_PASSWORD + id, {
+      ...info,
+    });
+    return data.result;
+  });
+
   /*
    *  UPDATE REQUESTS
    */
@@ -148,7 +164,7 @@ const useFetch = () => {
     return data.result;
   });
 
-  // Update the employee information
+  // UPDATE the employee information
   const updateEmployee = funcErrorWrapper(async (id, info) => {
     const { data } = await axios.patch(Requests.EMPLOYEE_REQUEST + id, {
       ...info,
@@ -156,6 +172,17 @@ const useFetch = () => {
     return data.result;
   });
 
+  // UPDATE the notification as confirmed by the doctor
+  const confirmNotification = funcErrorWrapper(async (id) => {
+    const { data } = await axios.patch(Requests.CONFIRM_NOTIFICATION + id);
+    return data.result;
+  });
+
+  // UPDATE the notification as not confirmed by the doctor
+  const notSeenNotification = funcErrorWrapper(async (id) => {
+    const { data } = await axios.patch(Requests.NOT_SEEN_NOTIFICATION + id);
+    return data.result;
+  });
   /**
    *  DELETE REQUESTS
    */
@@ -169,6 +196,26 @@ const useFetch = () => {
   // DELETE request to remove one employee
   const deleteEmployee = funcErrorWrapper(async (id) => {
     const { data } = await axios.delete(Requests.EMPLOYEE_REQUEST + id);
+    return data.result;
+  });
+
+  // DELETE a single notification
+  const deleteNotification = funcErrorWrapper(async (id) => {
+    const { data } = await axios.delete(Requests.NOTIFICATION_REQUEST + id);
+    return data.result;
+  });
+
+  // Delete a evat form
+  const deleteEvatForm = funcErrorWrapper(async (id) => {
+    const { data } = await axios.delete(Requests.DAILY_FORM_REQUEST + id);
+    return data.result;
+  });
+
+  // Delete all patient evat forms
+  const deletePatientEvatForms = funcErrorWrapper(async (idPatient) => {
+    const { data } = await axios.delete(
+      Requests.PATIENT_EVAT_FORMS + idPatient
+    );
     return data.result;
   });
 
@@ -195,6 +242,13 @@ const useFetch = () => {
     doctorNotifications,
     nurseNotifications,
     patientRecords,
+    deleteNotification,
+    newDoctorNotifications,
+    confirmNotification,
+    notSeenNotification,
+    changePassword,
+    deleteEvatForm,
+    deletePatientEvatForms,
   };
 };
 

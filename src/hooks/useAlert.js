@@ -7,6 +7,20 @@ const useAlert = () => {
   const { hiddeLoader, showLoader } = useContext(LoaderContext);
   const { cleanMessage, setErrorMessage } = useContext(ErrorMessageContext);
 
+  const alertQuestion = async (msg, btnMsg) => {
+    const result = await Swal.fire({
+      title: "Are you sure?",
+      text: msg,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: btnMsg,
+    });
+
+    return result.isConfirmed;
+  };
+
   /**
    * @description
    * Provides a modal question to confirm the execution of the callback passed as a parameter
@@ -24,17 +38,7 @@ const useAlert = () => {
   ) => {
     return async (...args) => {
       try {
-        const result = await Swal.fire({
-          title: "Are you sure?",
-          text: msg,
-          icon: "warning",
-          showCancelButton: true,
-          confirmButtonColor: "#3085d6",
-          cancelButtonColor: "#d33",
-          confirmButtonText: btnMsg,
-        });
-
-        if (result.isConfirmed) {
+        if (await alertQuestion(msg, btnMsg)) {
           showLoader();
           const result = await func(...args);
           hiddeLoader();
@@ -70,17 +74,7 @@ const useAlert = () => {
   ) => {
     return async (...args) => {
       try {
-        const result = await Swal.fire({
-          title: "Are you sure?",
-          text: msg,
-          icon: "warning",
-          showCancelButton: true,
-          confirmButtonColor: "#3085d6",
-          cancelButtonColor: "#d33",
-          confirmButtonText: btnMsg,
-        });
-
-        if (result.isConfirmed) {
+        if (await alertQuestion(msg, btnMsg)) {
           showLoader();
           const result = await func(...args);
           hiddeLoader();
@@ -119,17 +113,7 @@ const useAlert = () => {
   ) => {
     return async (...args) => {
       try {
-        const result = await Swal.fire({
-          title: "Are you sure?",
-          text: msg,
-          icon: "warning",
-          showCancelButton: true,
-          confirmButtonColor: "#3085d6",
-          cancelButtonColor: "#d33",
-          confirmButtonText: btnMsg,
-        });
-
-        if (result.isConfirmed) {
+        if (await alertQuestion(msg, btnMsg)) {
           cleanMessage();
 
           showLoader();
@@ -216,7 +200,9 @@ const useAlert = () => {
       cleanMessage();
       try {
         showLoader();
-        return await func(...args);
+        const result = await func(...args);
+        hiddeLoader();
+        return result;
       } catch (error) {
         setErrorMessage(error.message);
         hiddeLoader();
