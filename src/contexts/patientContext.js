@@ -9,7 +9,7 @@ const PatientProvider = ({ children }) => {
     const newInfo = {
       id: patient._id,
       name: patient.name,
-      age: patient.age,
+      birthDate: patient.birthDate,
       typeOfCancer: patient.typeOfCancer,
       services: patient.services,
       palliative: patient.palliative,

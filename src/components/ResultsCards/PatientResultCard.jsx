@@ -9,8 +9,9 @@ const PatientResultCard = ({ patient }) => {
           Name: <span className="name-color bold">{patient.name}</span>
         </div>
         <div>
-          Age: <span className="age-color">{patient.age}</span>
+          Birth Date: <span className="age-color">{patient.birthDate}</span>
         </div>
+        {console.log(patient.birthDate, patient.name)}
       </div>
       <div className="w-100 flex justify-between m-3 nowrap">
         <div>

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Select from "react-select";
 import { useForm } from "react-hook-form";
 
-const StaffSearch = ({ search }) => {
+const StaffSearchForm = ({ search }) => {
   const [role, setRole] = useState("all");
   const [orderBy, setOrderBy] = useState("name");
 
@@ -12,6 +12,7 @@ const StaffSearch = ({ search }) => {
     const query = `${name ? "name=" + name + "&" : ""}sort=${orderBy}${
       role !== "all" ? "&role=" + role : ""
     }`;
+
     search(query);
   };
 
@@ -30,27 +31,32 @@ const StaffSearch = ({ search }) => {
   ];
 
   return (
-    <div className="w-100 h-80 flex flex-column justify-evenly">
+    <div className="w-100 h-90 flex flex-column justify-evenly">
       <form className="w-100 h-100 flex flex-column justify-evenly">
         <div className="m-5">
           <p className="font-size-subtitles text-opacity">Select role:</p>
         </div>
+
         <Select
           defaultValue={role}
           onChange={(option) => setRole(option.value)}
           options={options}
         />
+
         <div className="m-5">
           <p className="font-size-subtitles text-opacity">Order By:</p>
         </div>
+
         <Select
           defaultValue={orderBy}
           onChange={(option) => setOrderBy(option.value)}
           options={orderOptions}
         />
+
         <div className="m-5">
           <p className="font-size-subtitles text-opacity">Name:</p>
         </div>
+
         <div className="flex">
           <input
             type="text"
@@ -69,4 +75,4 @@ const StaffSearch = ({ search }) => {
   );
 };
 
-export default StaffSearch;
+export default StaffSearchForm;

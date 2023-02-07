@@ -1,33 +1,20 @@
-import React, { useState, useContext, useEffect } from "react";
-import { ErrorMessageContext } from "../../contexts/errorMessageContext";
+import React, { useState } from "react";
+import GeneralComponents from "../../components/GeneralComponents";
 import useEvatAction from "../../hooks/Actions/useFormActions";
-import EvatAlgorithm from "../../evat-algorithm";
-import Components from "../../components";
 import { useForm } from "react-hook-form";
 import Select from "react-select";
 import { useParams } from "react-router-dom";
+import { Titles } from "../../constants/titles";
 
 const EvatPage = () => {
-  const { handleSubmit, register, watch, setValue } = useForm();
+  const { handleSubmit, register, watch } = useForm();
   const { id } = useParams();
   const [temperature, setTemperature] = useState("36");
   const [rightPupil, setRightPupil] = useState("R");
   const [leftPupil, setLeftPupil] = useState("R");
-  const { errorMessage, cleanMessage } = useContext(ErrorMessageContext);
-  const { heartRateTable, breathingRateTable, resultRateLevel } = EvatAlgorithm;
+  const [evatCardio, setEvatCardio] = useState(0);
+  const [evatResp, setEvatResp] = useState(0);
   const { createEvatForm } = useEvatAction();
-
-  useEffect(() => cleanMessage(), []);
-
-  setValue(
-    "cardio",
-    resultRateLevel(4, parseInt(watch("FC")) || 0, heartRateTable)
-  );
-
-  setValue(
-    "resp",
-    resultRateLevel(4, parseInt(watch("FR")) || 0, breathingRateTable)
-  );
 
   const rightPupilOptions = [
     { value: "R", label: "R" },
@@ -54,23 +41,22 @@ const EvatPage = () => {
   ];
 
   return (
-    <div className="w-100 flex-center vh-100">
-      <span className="background-img-user" />
+    <div className="w-100 flex-center vh-85 mt-5">
       <form
-        onSubmit={handleSubmit((data) =>
+        onSubmit={handleSubmit((data) => {
           createEvatForm({
             ...data,
             idPatient: id,
             temperature,
             rightPupil,
             leftPupil,
-          })
-        )}
+            cardio: evatCardio,
+            resp: evatResp,
+          });
+        })}
         className="w-80 h-100 flex flex-column align-items-center justify-evenly"
       >
-        <div className="title-container-patients w-100">
-          <h2>Patient Evat Form</h2>
-        </div>
+        <GeneralComponents.Title title={Titles.PATIENT_EVAT_FORM} />
 
         <div className="flex justify-evenly w-100">
           <input
@@ -113,6 +99,7 @@ const EvatPage = () => {
             />
           </div>
         </div>
+
         <div className="flex justify-evenly w-100">
           <input
             type="number"
@@ -130,6 +117,12 @@ const EvatPage = () => {
             type="number"
             {...register("SO2")}
             placeholder="SO2"
+            className="form m-5"
+          />
+          <input
+            type="number"
+            {...register("capillaryRefill")}
+            placeholder="Capillary Refill"
             className="form m-5"
           />
         </div>
@@ -163,18 +156,22 @@ const EvatPage = () => {
             placeholder="Neuro"
             className="form m-5"
           />
-          <input
-            type="number"
-            {...register("cardio")}
-            placeholder="Cardio"
-            className="form m-5"
-          />
-          <input
-            type="number"
-            {...register("resp")}
-            placeholder="Respiratory"
-            className="form m-5"
-          />
+          <div className="h-100 w-30 flex justify-evenly align-items-center font-size-subtitles">
+            Cardiological:{" "}
+            <GeneralComponents.EvatColorCardio
+              cardioInput={parseInt(watch("FC")) || 0}
+              patientMonths={38}
+              setEvatCardio={setEvatCardio}
+            />
+          </div>
+          <div className="h-100 w-30 flex justify-evenly align-items-center font-size-subtitles">
+            Respiratory:{" "}
+            <GeneralComponents.EvatColorRespiratory
+              respInput={parseInt(watch("FR")) || 0}
+              patientMonths={38}
+              setEvatResp={setEvatResp}
+            />
+          </div>
         </div>
         <div className="flex w-100 justify-evenly">
           <input
@@ -190,10 +187,11 @@ const EvatPage = () => {
             className="form m-5"
           />
         </div>
-        <Components.Message message={errorMessage} />
+        <GeneralComponents.ErrorMessage />
 
         <button className="btn m-5 w-60">Send</button>
       </form>
+      <GeneralComponents.ReturnPatientPage id={id} />
     </div>
   );
 };

@@ -9,12 +9,8 @@ import { useState } from "react";
 const usePatientActions = () => {
   const { QuestionMessages, ResponseMessages } = Messages;
   const { confirmAlertSuccessMsg } = useAlert();
-  const {
-    updatePatientRequest,
-    deletePatient,
-    deletePatientNurse,
-    setPatientNurse,
-  } = useFetch();
+  const { updatePatientRequest, deletePatient, deletePatientNurse } =
+    useFetch();
   const { patient, setPatientInfo } = useContext(PatientContext);
   const navigate = useNavigate();
 
@@ -43,35 +39,33 @@ const usePatientActions = () => {
     ResponseMessages.REMOVE_PATIENT_NURSE
   );
 
-  const setNurseId = confirmAlertSuccessMsg(
-    async (id, idNurse) => {
-      const result = await setPatientNurse(id, idNurse);
-      setPatientInfo(result);
-    },
-    QuestionMessages.ASSIGN_PATIENT,
-    ResponseMessages.ASSIGN_PATIENT
-  );
-
   return {
     updatePatient,
     deletePatientHome,
     deleteNurseId,
-    setNurseId,
   };
 };
 
 export const usePatient = () => {
   const { QuestionMessages, ResponseMessages } = Messages;
-  const { confirmAlertErrorSuccessMsg, waitingResponseAlert } = useAlert();
-  const { AddPatientRequest, getPatientsFilter } = useFetch();
+  const {
+    confirmAlertErrorSuccessMsg,
+    waitingResponseAlert,
+    confirmAlertSuccessMsg,
+  } = useAlert();
+  const { AddPatientRequest, getPatientsFilter, setPatientNurse } = useFetch();
   const [patients, setPatients] = useState([]);
 
   const createPatient = confirmAlertErrorSuccessMsg(
-    async (data) => {
-      await AddPatientRequest({ ...data });
-    },
+    async (data) => await AddPatientRequest({ ...data }),
     QuestionMessages.PATIENT_FORM,
     ResponseMessages.PATIENT_CREATED
+  );
+
+  const setNurseId = confirmAlertSuccessMsg(
+    async (id, idNurse) => await setPatientNurse(id, idNurse),
+    QuestionMessages.ASSIGN_PATIENT,
+    ResponseMessages.ASSIGN_PATIENT
   );
 
   const searchPatients = waitingResponseAlert(async (query) => {
@@ -79,7 +73,7 @@ export const usePatient = () => {
     setPatients(result);
   });
 
-  return { createPatient, searchPatients, patients };
+  return { createPatient, searchPatients, patients, setNurseId };
 };
 
 export default usePatientActions;

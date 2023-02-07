@@ -1,35 +1,30 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import GeneralComponents from "../../components/GeneralComponents";
+import { useSetPatientInfo } from "../../hooks/DefaultInfo";
 
-const PatientForm = ({ action, patientDefaultInfo, children }) => {
+const PatientForm = ({ action, patientInfo }) => {
+  const defaultInfo = useSetPatientInfo(patientInfo);
+
   const { register, handleSubmit } = useForm({
-    defaultValues: {
-      name: patientDefaultInfo?.name || "",
-      age: patientDefaultInfo?.age || "",
-      palliative: patientDefaultInfo?.palliative || "",
-      typeOfCancer: patientDefaultInfo?.typeOfCancer || "",
-      services: patientDefaultInfo?.services || "",
-    },
+    defaultValues: defaultInfo,
   });
 
-  const onSubmit = (data) => action({ ...data });
-
   return (
-    <div className="form-patient-container mt-5 flex w-100">
-      <form onSubmit={handleSubmit(onSubmit)} className="flex">
+    <div className="h-90 form-patient-container mt-5 flex w-100">
+      <form
+        onSubmit={handleSubmit((data) => action({ ...data }))}
+        className="flex w-100 h-100 flex-column justify-evenly align-items-center"
+      >
         <input
           type="text"
           placeholder="Name"
           {...register("name")}
           className="form m-5"
         />
-        <input
-          type="number"
-          placeholder="Age"
-          {...register("age")}
-          className="form m-5"
-        />
-        <div className="flex radio-btn-container w-100">
+        <input type="date" {...register("birthDateIso")} className="form m-5" />
+
+        <div className="flex justify-evenly w-100">
           <label className="bold text-opacity">Palliative</label>
           <div className="flex-center">
             <label className="flex-center m-5 bold text-opacity">
@@ -38,7 +33,6 @@ const PatientForm = ({ action, patientDefaultInfo, children }) => {
                 type="radio"
                 name="palliative"
                 value="Si"
-                placeholder="Age"
                 {...register("palliative")}
                 className="form m-5"
               />
@@ -55,6 +49,7 @@ const PatientForm = ({ action, patientDefaultInfo, children }) => {
             </label>
           </div>
         </div>
+
         <input
           type="text"
           placeholder="Type of cancer"
@@ -67,7 +62,8 @@ const PatientForm = ({ action, patientDefaultInfo, children }) => {
           {...register("services")}
           className="form m-5"
         />
-        {children}
+
+        <GeneralComponents.ErrorMessage />
         <input type="submit" className="btn" />
       </form>
     </div>

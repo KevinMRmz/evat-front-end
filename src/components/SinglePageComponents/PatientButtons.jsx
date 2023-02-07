@@ -7,29 +7,29 @@ const PatientButtons = ({ id }) => {
   const { user } = useContext(UserContext);
 
   return (
-    <div className="flex justify-evenly w-100">
-      <button
-        className="btn w-30 bg-orange"
+    <div className="flex">
+      <span
+        className="color-blue pointer mr-5 icon-size"
         onClick={() =>
           navigate(`/${user.role.toLowerCase()}/notification/${id}`)
         }
       >
-        Send Notification
-      </button>
-      <button
-        className="btn w-30"
+        <ion-icon name="send"></ion-icon>
+      </span>
+      <span
+        className="color-yellow pointer mr-5 icon-size"
         onClick={() =>
           navigate(`/${user.role.toLowerCase()}/evat-record/${id}`)
         }
       >
-        Patient Record
-      </button>
-      <button
-        className="btn w-30 bg-green"
-        onClick={() => navigate("/evat-form/" + id)}
+        <ion-icon name="folder"></ion-icon>
+      </span>
+      <span
+        className=" text-black pointer mr-5 icon-size"
+        onClick={() => navigate("/nurse/evat-form/" + id)}
       >
-        Evat Form
-      </button>
+        <ion-icon name="list-box"></ion-icon>
+      </span>
     </div>
   );
 };

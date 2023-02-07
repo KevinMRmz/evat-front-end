@@ -22,9 +22,7 @@ export default function NurseHeader() {
               <ion-icon name="home"></ion-icon>
             </Link>
           </div>
-          <div className="mr-5 text-center uppercase lp-5 pointer">
-            EVAT Form
-          </div>
+          <div className="text-center uppercase lp-5 pointer">EVAT Form</div>
           <div className="mr-5 pointer">
             <Link to="/nurse/notifications">
               <ion-icon name="mail"></ion-icon>

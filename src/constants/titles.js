@@ -11,3 +11,18 @@ export const ErrorPagesSubtitles = {
   ERROR_404: "Resource not found",
   NOT_CONNECTION: "No internet connection",
 };
+
+export const Titles = {
+  ADD_PATIENT: "Add Patient",
+  UPDATE_PATIENT: "Update Patient",
+  ADD_EMPLOYEE: "Add Employee",
+  UPDATE_STAFF: "Update Staff",
+  SEARCH_STAFF: "Search Staff",
+  SEARCH_PATIENT: "Search Patients",
+  NOTIFICATION_FORM: "Notification form",
+  NURSE_PATIENTS: "Your Patients",
+  NURSE_NOTIFICATIONS: "Your Notifications",
+  PATIENT_EVAT_FORM: "Patient Evat form",
+  CURRENT_NOTIFICATIONS: "Your Current Notifications",
+  NOTIFICATION_RECORD: "Notification Record",
+};
