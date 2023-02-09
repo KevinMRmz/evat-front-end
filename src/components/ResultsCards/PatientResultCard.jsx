@@ -11,7 +11,6 @@ const PatientResultCard = ({ patient }) => {
         <div>
           Birth Date: <span className="age-color">{patient.birthDate}</span>
         </div>
-        {console.log(patient.birthDate, patient.name)}
       </div>
       <div className="w-100 flex justify-between m-3 nowrap">
         <div>
