@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { UserContext } from "../../../contexts/userContext";
 import useFetch from "../../../hooks/useFetch";
 import useFetchDataById from "../../../hooks/useFetchDataById";
+import { Titles } from "../../../constants/titles";
+import Layouts from "../../../layouts";
 import Components from "../../../components";
 import Modal from "react-responsive-modal";
 
 const NotificationsRecord = () => {
-  const idDoctor = "63b59a69775e132b0acec6e6";
+  const { user } = useContext(UserContext);
   const { doctorNotifications } = useFetch();
-  const { data, setData } = useFetchDataById(doctorNotifications, idDoctor);
+  const { data, setData } = useFetchDataById(doctorNotifications, user.id);
   const [open, setOpen] = useState(false);
   const [notification, setNotification] = useState({});
 
@@ -19,31 +22,19 @@ const NotificationsRecord = () => {
 
   return (
     <>
-      <div className="flex justify-center w-90 m-5">
-        <div className="w-80 m-5 title-container-patients">
-          <h2>Notification Record</h2>
-        </div>
-      </div>
-      <div className="w-100 flex-center mt-5">
-        <div className="flex w-90 vh-70 flex-column overflow-y-scroll">
-          {data.length !== 0 ? (
-            data.map((result) => (
-              <div
-                onClick={() => {
-                  setNotification(result);
-                  setOpen(true);
-                }}
-              >
-                <Components.NotificationCard notification={result} />
-              </div>
-            ))
-          ) : (
-            <h2 className="danger-text m-5 text-center">
-              No Notifications where found
-            </h2>
-          )}
-        </div>
-      </div>
+      <Layouts.CardsLayout
+        title={Titles.NOTIFICATION_RECORD}
+        cards={data.map((result) => (
+          <div
+            onClick={() => {
+              setNotification(result);
+              setOpen(true);
+            }}
+          >
+            <Components.NotificationCard notification={result} />
+          </div>
+        ))}
+      />
       <Modal open={open} onClose={() => setOpen(false)}>
         <Components.NotificationModalInfo
           notification={notification}

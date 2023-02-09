@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Select from "react-select";
 import { useForm } from "react-hook-form";
 
-const PatientSearch = ({ search }) => {
+const PatientSearchForm = ({ search }) => {
   const [orderBy, setOrderBy] = useState("name");
 
   const { handleSubmit, register } = useForm();
@@ -21,19 +21,22 @@ const PatientSearch = ({ search }) => {
 
   return (
     <div className="w-100 h-80 flex flex-column">
-      <form className="w-100 h-80 flex flex-column justify-evenly">
+      <form className="w-100 h-100 flex flex-column justify-evenly">
         <div className="mt-5">
           <p className="font-size-subtitles text-opacity">Order By:</p>
         </div>
+
         <Select
           defaultValue={orderBy}
           onChange={(option) => setOrderBy(option.value)}
           options={options}
           className="mt-5"
         />
+
         <div className="mt-5">
           <p className="font-size-subtitles text-opacity">Patient name:</p>
         </div>
+
         <div className="flex mt-5">
           <input
             type="text"
@@ -52,4 +55,4 @@ const PatientSearch = ({ search }) => {
   );
 };
 
-export default PatientSearch;
+export default PatientSearchForm;

@@ -1,19 +1,16 @@
 import React, { useState } from "react";
+import GeneralComponents from "../../components/GeneralComponents";
+import { useSetStaffInfo } from "../../hooks/DefaultInfo";
 import { useForm } from "react-hook-form";
 import Select from "react-select";
 
-const StaffForm = ({ action, children, staffDefaultInfo, roleUser }) => {
-  const { register, handleSubmit } = useForm({
-    defaultValues: {
-      name: staffDefaultInfo?.name || "",
-      email: staffDefaultInfo?.email || "",
-      phone: staffDefaultInfo?.phone || "",
-      specialty: staffDefaultInfo?.specialty || "",
-    },
-  });
-  const [role, setRole] = useState(roleUser?.toLowerCase() || "nurse");
+const StaffForm = ({ action, staffDefaultInfo, isUpdating }) => {
+  const defaultInfo = useSetStaffInfo(staffDefaultInfo);
+  const [role, setRole] = useState(defaultInfo.role);
 
-  const onSubmit = (data) => action({ ...data, role });
+  const { register, handleSubmit } = useForm({
+    defaultValues: defaultInfo,
+  });
 
   const options = [
     { value: "nurse", label: "Nurse" },
@@ -23,15 +20,17 @@ const StaffForm = ({ action, children, staffDefaultInfo, roleUser }) => {
   ];
 
   return (
-    <div className="form-patient-container mt-5 flex">
-      <form onSubmit={handleSubmit(onSubmit)} className="flex">
-        <div className="staff-menu">
-          <Select
-            defaultValue={role}
-            onChange={(option) => setRole(option.value)}
-            options={options}
-          />
-        </div>
+    <div className="w-100 h-90 mt-5 flex justify-center">
+      <form
+        onSubmit={handleSubmit((data) => action({ ...data, role }))}
+        className="flex w-100 h-100 flex-column justify-evenly align-items-center"
+      >
+        <Select
+          defaultValue={role}
+          onChange={(option) => setRole(option.value)}
+          options={options}
+        />
+
         <input
           type="text"
           placeholder="Name"
@@ -50,12 +49,20 @@ const StaffForm = ({ action, children, staffDefaultInfo, roleUser }) => {
           {...register("phone")}
           className="form m-5"
         />
-        <input
-          type="password"
-          placeholder="Password"
-          {...register("password")}
-          className="form m-5"
-        />
+
+        {isUpdating ? (
+          <></>
+        ) : (
+          <>
+            <input
+              type="password"
+              placeholder="Password"
+              {...register("password")}
+              className="form m-5"
+            />
+          </>
+        )}
+
         {role === "doctor" || role === "resident" ? (
           <>
             <input
@@ -69,7 +76,7 @@ const StaffForm = ({ action, children, staffDefaultInfo, roleUser }) => {
           <></>
         )}
 
-        {children}
+        <GeneralComponents.ErrorMessage />
         <input type="submit" className="btn" />
       </form>
     </div>

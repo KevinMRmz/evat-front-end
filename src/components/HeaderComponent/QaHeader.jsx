@@ -25,7 +25,7 @@ export default function QaHeader() {
             </Link>
           </div>
           <div className="mr-5 text-center uppercase lp-5">
-            <h2 className="title-header">administration</h2>
+            <h2 className=" font-size-1-2">administration</h2>
           </div>
           <div className="mr-5">
             <Link to="/admin/history" className="pointer">

@@ -1,15 +1,12 @@
-import React, { useContext, useEffect } from "react";
-import { useForm } from "react-hook-form";
-import { ErrorMessageContext } from "../../contexts/errorMessageContext";
+import GeneralComponents from "../../components/GeneralComponents";
 import useAuthActions from "../../hooks/Actions/useAuthActions";
-import Components from "../../components";
+import { useForm } from "react-hook-form";
+import React from "react";
 import "./login.css";
 
 const Login = () => {
-  const { errorMessage, cleanMessage } = useContext(ErrorMessageContext);
   const { register, handleSubmit } = useForm();
   const { login } = useAuthActions();
-  useEffect(() => cleanMessage(), []);
 
   return (
     <div className="login-page">
@@ -19,6 +16,7 @@ const Login = () => {
           alt="Imagen del escudo del estado de Chihuahua"
           className="login-img mb-5"
         />
+
         <form className="login-form-container" onSubmit={handleSubmit(login)}>
           <input
             type="email"
@@ -32,7 +30,8 @@ const Login = () => {
             placeholder="Password"
             {...register("password")}
           />
-          <Components.Message message={errorMessage} />
+
+          <GeneralComponents.ErrorMessage />
           <input type="submit" className="btn mt-5" />
         </form>
       </div>

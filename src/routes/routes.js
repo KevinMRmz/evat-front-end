@@ -57,6 +57,10 @@ const Router = () => {
           path: "notification/:id",
           element: <NotificationPage />,
         },
+        {
+          path: "evat-form/:id",
+          element: <EvatPage />,
+        },
       ],
     },
     {
@@ -94,6 +98,10 @@ const Router = () => {
               <SinglePatient />
             </PatientProvider>
           ),
+        },
+        {
+          path: "assign-nurse/:id",
+          element: <QaPages.AssignNurse />,
         },
         {
           path: "staff/:id",
@@ -150,10 +158,6 @@ const Router = () => {
           element: <EvatForm />,
         },
       ],
-    },
-    {
-      path: "evat-form/:id",
-      element: <EvatPage />,
     },
     { path: "/forbidden", element: <ErrorPages.ForbiddenPage /> },
     { path: "/not-found", element: <ErrorPages.NotFoundPage /> },

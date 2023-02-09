@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import RecordCard from "../../components/ResultsCards/RecordCard";
 import { useState } from "react";
 import useFormActions from "../../hooks/Actions/useFormActions";
+import GeneralComponents from "../../components/GeneralComponents";
 
 const EvatFormInformation = ({ evatForm }) => {
   return (
@@ -43,7 +44,7 @@ const EvatForm = () => {
             <h2 className="m-5">Patient Evat</h2>
           </div>
           <div className="h-90 flex flex-column justify-between">
-            <div className="w-100 h-80 overflow-y-scroll">
+            <div className="w-100 h-100 overflow-y-scroll">
               {data.length !== 0 ? (
                 data.map((result) => (
                   <div onClick={() => setEvatForm(result)}>
@@ -57,7 +58,7 @@ const EvatForm = () => {
               )}
             </div>
             <button
-              className={`btn btn-danger w-100 ${
+              className={`btn bg-black no-border-radius w-100 ${
                 data.length !== 0 ? "" : "opacity-5"
               }`}
               onClick={async () => {
@@ -78,7 +79,7 @@ const EvatForm = () => {
             <h2 className="m-5">Evat Form</h2>
           </div>
           <div className="h-90 flex flex-column justify-between">
-            <div className="h-80 overflow-y-scroll justify-evenly">
+            <div className="h-100 overflow-y-scroll justify-evenly">
               <EvatFormInformation evatForm={evatForm} />
             </div>
             <div
@@ -88,7 +89,7 @@ const EvatForm = () => {
             >
               <div className="flex-center w-50">
                 <button
-                  className="btn bg-orange w-100"
+                  className="btn btn-danger w-100 no-border-radius"
                   onClick={async () => {
                     if (await removeEvatForm(evatForm._id)) {
                       changeList(evatForm._id);
@@ -100,12 +101,15 @@ const EvatForm = () => {
                 </button>
               </div>
               <div className="flex-center w-50">
-                <button className="btn w-100">Update form</button>
+                <button className="btn w-100 no-border-radius">
+                  Update form
+                </button>
               </div>
             </div>
           </div>
         </div>
       </div>
+      <GeneralComponents.ReturnPatientPage id={id} />
     </div>
   );
 };

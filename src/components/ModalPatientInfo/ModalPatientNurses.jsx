@@ -6,6 +6,8 @@ import StaffResultCard from "../ResultsCards/StaffResultCard";
 import useFetchData from "../../hooks/useFetchData";
 import usePatientActions from "../../hooks/Actions/usePatientActions";
 
+import Layouts from "../../layouts";
+
 function ModalPatientNurses() {
   const { patient } = useContext(PatientContext);
   const { getAllNurses } = useFetch();

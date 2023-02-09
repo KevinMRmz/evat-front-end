@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import Modal from "react-responsive-modal";
-import Components from "..";
 import usePatientActions from "../../hooks/Actions/usePatientActions";
+import Modals from "../Modals";
+import { useNavigate } from "react-router-dom";
 
-const PatientHeader = ({ setPatientInfo, id }) => {
+const PatientHeader = ({ id }) => {
   const [updateModal, setUpdateModal] = useState(false);
-  const [nursesModal, setNursesModal] = useState(false);
+  const navigate = useNavigate();
 
   const { deletePatientHome, deleteNurseId } = usePatientActions();
 
@@ -22,7 +23,7 @@ const PatientHeader = ({ setPatientInfo, id }) => {
       <div>
         <span
           className="mr-5 pointer icon-size add-nurse"
-          onClick={() => setNursesModal(true)}
+          onClick={() => navigate("/admin/assign-nurse/" + id)}
         >
           <ion-icon name="medkit"></ion-icon>
         </span>
@@ -43,12 +44,8 @@ const PatientHeader = ({ setPatientInfo, id }) => {
           <ion-icon name="remove"></ion-icon>
         </span>
       </div>
-
       <Modal open={updateModal} onClose={() => setUpdateModal(false)}>
-        <Components.ModalPatientUpdate />
-      </Modal>
-      <Modal open={nursesModal} onClose={() => setNursesModal(false)}>
-        <Components.ModalPatientNurses />
+        <Modals.UpdatePatient />
       </Modal>
     </div>
   );
