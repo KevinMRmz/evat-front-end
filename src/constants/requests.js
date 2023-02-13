@@ -1,45 +1,45 @@
-const DAILY_FORM_REQUEST =
+export const DAILY_FORM_REQUEST =
   process.env.REACT_APP_URL + "/api/v1/medical-daily-form/";
-const PATIENT_EVAT_FORMS =
+export const PATIENT_EVAT_FORMS =
   process.env.REACT_APP_URL + "/api/v1/medical-daily-form/patient-evat-form/";
 
-const RED_EVAT_REQUEST = process.env.REACT_APP_URL + "/api/v1/red-evat/";
+export const RED_EVAT_REQUEST = process.env.REACT_APP_URL + "/api/v1/red-evat/";
 
-const RECORD_REQUEST = process.env.REACT_APP_URL + "/api/v1/record/";
+export const RECORD_REQUEST = process.env.REACT_APP_URL + "/api/v1/record/";
 
-const LOGIN_REQUEST = process.env.REACT_APP_URL + "/api/v1/auth/";
+export const LOGIN_REQUEST = process.env.REACT_APP_URL + "/api/v1/auth/";
 
-const PATIENT_REQUEST = process.env.REACT_APP_URL + "/api/v1/patient/";
-const PATIENT_FILTER_REQUEST =
+export const PATIENT_REQUEST = process.env.REACT_APP_URL + "/api/v1/patient/";
+export const PATIENT_FILTER_REQUEST =
   process.env.REACT_APP_URL + "/api/v1/patient/filter?";
-const PATIENT_ASSIGN_NURSE =
+export const PATIENT_ASSIGN_NURSE =
   process.env.REACT_APP_URL + "/api/v1/patient/asign-nurse/";
 
-const EMPLOYEE_FILTER_REQUEST =
+export const EMPLOYEE_FILTER_REQUEST =
   process.env.REACT_APP_URL + "/api/v1/employee/filter?";
-const EMPLOYEE_REQUEST = process.env.REACT_APP_URL + "/api/v1/employee/";
-const EMPLOYEE_NURSES_REQUEST =
+export const EMPLOYEE_REQUEST = process.env.REACT_APP_URL + "/api/v1/employee/";
+export const EMPLOYEE_NURSES_REQUEST =
   process.env.REACT_APP_URL + "/api/v1/employee/nurses";
-const EMPLOYEE_NURSE_PATIENTS_REQUEST =
+export const EMPLOYEE_NURSE_PATIENTS_REQUEST =
   process.env.REACT_APP_URL + "/api/v1/patient/nurse-patients/";
-const EMPLOYEE_DOCTORS_REQUEST =
+export const EMPLOYEE_DOCTORS_REQUEST =
   process.env.REACT_APP_URL + "/api/v1/employee/doctors";
-const CHANGE_PASSWORD =
+export const CHANGE_PASSWORD =
   process.env.REACT_APP_URL + "/api/v1/employee/change-password/";
 
-const NOTIFICATION_REQUEST =
+export const NOTIFICATION_REQUEST =
   process.env.REACT_APP_URL + "/api/v1/notification/";
-const PATIENT_NOTIFICATIONS_REQUEST =
+export const PATIENT_NOTIFICATIONS_REQUEST =
   process.env.REACT_APP_URL + "/api/v1/notification/patient-notifications/";
-const NURSE_NOTIFICATIONS_REQUEST =
+export const NURSE_NOTIFICATIONS_REQUEST =
   process.env.REACT_APP_URL + "/api/v1/notification/nurse-notifications/";
-const DOCTOR_NOTIFICATIONS_REQUEST =
+export const DOCTOR_NOTIFICATIONS_REQUEST =
   process.env.REACT_APP_URL + "/api/v1/notification/doctor-notifications/";
-const NEW_DOCTOR_NOTIFICATIONS =
+export const NEW_DOCTOR_NOTIFICATIONS =
   process.env.REACT_APP_URL + "/api/v1/notification/new-doctor-notifications/";
-const CONFIRM_NOTIFICATION =
+export const CONFIRM_NOTIFICATION =
   process.env.REACT_APP_URL + "/api/v1/notification/confirm-notification/";
-const NOT_SEEN_NOTIFICATION =
+export const NOT_SEEN_NOTIFICATION =
   process.env.REACT_APP_URL + "/api/v1/notification/not-seen-notification/";
 
 const Requests = {

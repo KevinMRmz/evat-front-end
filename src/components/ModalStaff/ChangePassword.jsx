@@ -1,10 +1,10 @@
-import React from "react";
+import useEmployeeContextActions from "../../api/staff-service/staff-actions";
 import { useForm } from "react-hook-form";
-import useStaffActions from "../../hooks/Actions/useStaffActions";
+import React from "react";
 
 const ChangePassword = ({ id }) => {
   const { handleSubmit, register } = useForm();
-  const { newPassword } = useStaffActions();
+  const { newPassword } = useEmployeeContextActions();
 
   return (
     <>

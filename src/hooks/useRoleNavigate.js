@@ -7,14 +7,14 @@ const useRoleNavigate = () => {
   const navigateByRole = (role) => {
     switch (role) {
       case Roles.ADMIN:
-        navigate("/admin/");
+        navigate("/admin/config");
         break;
       case Roles.NURSE:
-        navigate("/nurse/");
+        navigate("/nurse/config");
         break;
       case Roles.DOCTOR:
       case Roles.RESIDENT:
-        navigate("/doctor/");
+        navigate("/doctor/config");
         break;
       default:
         throw new Error("Not role specified");

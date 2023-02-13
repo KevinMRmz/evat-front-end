@@ -5,7 +5,11 @@ const resultRateLevel = (months, frequency, table) => {
 
   for (let column = 0; column < table.length; column++) {
     if (ageTable[column](months)) {
-      return rateLevel(frequency, ...table[column]);
+      try {
+        return rateLevel(frequency, ...table[column]);
+      } catch (error) {
+        return -1;
+      }
     }
   }
 
@@ -19,7 +23,6 @@ const rateLevel = (freq, normal, mind, moderate, severe) => {
   else if (range(mind, freq)) return 1;
   else if (range(moderate, freq)) return 2;
   else if (range(severe, freq, true)) return 3;
-  else return 0;
   throw new Error(
     "frequency provided did not match with any of the given ranges"
   );

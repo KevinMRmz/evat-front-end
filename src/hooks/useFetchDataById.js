@@ -14,7 +14,12 @@ const useFetchDataById = (fetchFunction, id) => {
       .finally(() => hiddeLoader());
   }, []);
 
-  return { data, setData };
+  const updateDataById = (id) => {
+    const newData = data.filter((element) => element._id !== id);
+    setData(newData);
+  };
+
+  return { data, setData, updateDataById };
 };
 
 export default useFetchDataById;

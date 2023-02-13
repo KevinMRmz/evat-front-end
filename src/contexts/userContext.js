@@ -6,20 +6,22 @@ const UserProvider = ({ children }) => {
   const [user, setUser] = useState({
     auth: false,
     name: "",
+    email: "",
     role: "",
     _id: "",
     phone: "",
-    speciality: "",
+    specialty: "",
   });
 
   const setUserInfo = (user) => {
     const newUser = {
       auth: user.auth,
       name: user.name,
+      email: user.email,
       role: user.role,
       id: user._id,
       phone: user.phone,
-      speciality: user.speciality,
+      specialty: user.specialty,
     };
 
     setUser(newUser);

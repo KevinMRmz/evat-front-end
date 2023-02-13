@@ -10,7 +10,7 @@ const ForbiddenPageNotLogin = () => {
     <Layouts.ErrorPagesLayout
       title={ErrorPagesTitles.FORBIDDEN_ERROR}
       subtitle={ErrorPagesSubtitles.FORBIDDEN_ERROR_NOT_LOGIN}
-      redirect={-1}
+      redirect={"/"}
     />
   );
 };

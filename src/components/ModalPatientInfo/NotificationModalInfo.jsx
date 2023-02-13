@@ -1,8 +1,8 @@
-import React, { useContext } from "react";
-import { Link } from "react-router-dom";
-import useNotificationsActions from "../../hooks/Actions/useNotificationsActions";
+import useNotificationsActions from "../../api/notification-service/notification-actions";
 import { NotificationManager } from "react-notifications";
 import { UserContext } from "../../contexts/userContext";
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 
 const NotificationModalInfo = ({
   notification,
