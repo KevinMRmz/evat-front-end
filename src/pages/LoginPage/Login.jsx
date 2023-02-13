@@ -1,12 +1,12 @@
 import GeneralComponents from "../../components/GeneralComponents";
-import useAuthActions from "../../hooks/Actions/useAuthActions";
+import useAuthActions from "../../api/auth-service/auth-actions";
 import { useForm } from "react-hook-form";
 import React from "react";
 import "./login.css";
 
 const Login = () => {
   const { register, handleSubmit } = useForm();
-  const { login } = useAuthActions();
+  const { logIn } = useAuthActions();
 
   return (
     <div className="login-page">
@@ -17,7 +17,7 @@ const Login = () => {
           className="login-img mb-5"
         />
 
-        <form className="login-form-container" onSubmit={handleSubmit(login)}>
+        <form className="login-form-container" onSubmit={handleSubmit(logIn)}>
           <input
             type="email"
             className="login-form input-login mb-5"

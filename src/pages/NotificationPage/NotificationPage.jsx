@@ -1,4 +1,4 @@
-import useNotificationsActions from "../../hooks/Actions/useNotificationsActions";
+import useNotificationsActions from "../../api/notification-service/notification-actions";
 import GeneralComponents from "../../components/GeneralComponents";
 import { UserContext } from "../../contexts/userContext";
 import React, { useState, useContext } from "react";

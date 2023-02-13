@@ -3,8 +3,8 @@ import useFetchDataById from "../../hooks/useFetchDataById";
 import { useParams } from "react-router-dom";
 import RecordCard from "../../components/ResultsCards/RecordCard";
 import { useState } from "react";
-import useFormActions from "../../hooks/Actions/useFormActions";
 import GeneralComponents from "../../components/GeneralComponents";
+import useEvatActions from "../../api/evat-service/useEvatActions";
 
 const EvatFormInformation = ({ evatForm }) => {
   return (
@@ -29,7 +29,7 @@ const EvatForm = () => {
   const { id } = useParams();
   const { data, setData } = useFetchDataById(patientRecords, id);
   const [evatForm, setEvatForm] = useState({});
-  const { removeEvatForm, removeAllPatientForms } = useFormActions();
+  const { removeEvatForm, removeAllPatientForms } = useEvatActions();
 
   const changeList = (id) => {
     const listChanged = data.filter((form) => form._id !== id);

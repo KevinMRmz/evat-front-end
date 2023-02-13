@@ -1,4 +1,4 @@
-import usePatientActions from "../../../hooks/Actions/usePatientActions";
+import usePatientContextActions from "../../../api/patient-service/patient-actions";
 import { PatientContext } from "../../../contexts/patientContext";
 import { useSetPatientInfo } from "../../../hooks/DefaultInfo";
 import GeneralComponents from "../../GeneralComponents";
@@ -8,9 +8,9 @@ import Layouts from "../../../layouts";
 import Forms from "../../../forms";
 
 const UpdatePatient = () => {
+  const { updatePatient } = usePatientContextActions();
   const { patient } = useContext(PatientContext);
   const defaultInfo = useSetPatientInfo(patient);
-  const { updatePatient } = usePatientActions();
 
   return (
     <Layouts.ModalLayout>

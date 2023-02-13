@@ -7,9 +7,9 @@ export default function QaHeader() {
     <>
       <div className="header">
         <div>
-          <div>
-            <Link to="/admin/">
-              <ion-icon name="folder"></ion-icon>
+          <div className="mr-5">
+            <Link to="/admin/config" className="pointer">
+              <ion-icon name="contact"></ion-icon>
             </Link>
           </div>
         </div>
@@ -25,12 +25,14 @@ export default function QaHeader() {
             </Link>
           </div>
           <div className="mr-5 text-center uppercase lp-5">
-            <h2 className=" font-size-1-2">administration</h2>
+            <h2 className="font-size-1-2">administration</h2>
           </div>
           <div className="mr-5">
-            <Link to="/admin/history" className="pointer">
-              <ion-icon name="paper"></ion-icon>
-            </Link>
+            <div>
+              <Link to="/admin/">
+                <ion-icon name="folder"></ion-icon>
+              </Link>
+            </div>
           </div>
           <div className="mr-5">
             <Link to="/admin/patient-search">

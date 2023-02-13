@@ -1,4 +1,4 @@
-import { usePatient } from "../../../hooks/Actions/usePatientActions";
+import { usePatientActions } from "../../../api/patient-service/patient-actions";
 import { Titles } from "../../../constants/titles";
 import Components from "../../../components";
 import { Link } from "react-router-dom";
@@ -6,7 +6,7 @@ import Layouts from "../../../layouts";
 import Forms from "../../../forms";
 
 const SearchPatient = () => {
-  const { searchPatients, patients } = usePatient();
+  const { searchPatients, patients } = usePatientActions();
 
   return (
     <Layouts.SearchLayout

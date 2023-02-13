@@ -1,4 +1,4 @@
-import useStaffActions from "../../hooks/Actions/useStaffActions";
+import useEmployeeContextActions from "../../api/staff-service/staff-actions";
 import React, { useState } from "react";
 import Modal from "react-responsive-modal";
 import Components from "..";
@@ -9,7 +9,7 @@ const StaffHeader = ({ staff }) => {
   const [updateModal, setUpdateModal] = useState(false);
   const [patientModal, setPatientModal] = useState(false);
   const [changePasswordModal, setChangePasswordModal] = useState(false);
-  const { deleteEmployeeRequest } = useStaffActions();
+  const { deleteEmployeeRequest } = useEmployeeContextActions();
 
   return (
     <div className="flex">

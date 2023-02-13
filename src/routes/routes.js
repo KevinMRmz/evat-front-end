@@ -14,6 +14,7 @@ import NotificationPage from "../pages/NotificationPage/NotificationPage";
 import ErrorPages from "../pages/ErrorPages";
 import Roles from "../constants/roles";
 import Auth from "../auth/Auth";
+import UserPage from "../pages/UserPage/UserPage";
 
 const Router = () => {
   let routes = useRoutes([
@@ -59,7 +60,15 @@ const Router = () => {
         },
         {
           path: "evat-form/:id",
-          element: <EvatPage />,
+          element: (
+            <PatientProvider>
+              <EvatPage />
+            </PatientProvider>
+          ),
+        },
+        {
+          path: "config",
+          element: <UserPage />,
         },
       ],
     },
@@ -80,8 +89,8 @@ const Router = () => {
           element: <QaPages.SearchPatient />,
         },
         {
-          path: "history",
-          element: <QaPages.History />,
+          path: "config",
+          element: <UserPage />,
         },
         {
           path: "create-patient",
@@ -157,10 +166,13 @@ const Router = () => {
           path: "evat-record/:id",
           element: <EvatForm />,
         },
+        {
+          path: "config",
+          element: <UserPage />,
+        },
       ],
     },
     { path: "/forbidden", element: <ErrorPages.ForbiddenPage /> },
-    { path: "/not-found", element: <ErrorPages.NotFoundPage /> },
     { path: "/not-connection", element: <ErrorPages.NotConnectionPage /> },
     { path: "/", element: <Login /> },
     { path: "*", element: <ErrorPages.NotFoundPage /> },

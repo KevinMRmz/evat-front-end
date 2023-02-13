@@ -1,4 +1,4 @@
-import useStaffActions from "../../../hooks/Actions/useStaffActions";
+import useEmployeeContextActions from "../../../api/staff-service/staff-actions";
 import { StaffContext } from "../../../contexts/staffContext";
 import { useSetStaffInfo } from "../../../hooks/DefaultInfo";
 import GeneralComponents from "../../GeneralComponents";
@@ -8,9 +8,9 @@ import Layouts from "../../../layouts";
 import Forms from "../../../forms";
 
 const UpdateStaff = () => {
+  const { updateStaff } = useEmployeeContextActions();
   const { staff } = useContext(StaffContext);
   const defaultInfo = useSetStaffInfo(staff);
-  const { updateStaff } = useStaffActions();
 
   return (
     <Layouts.ModalLayout>

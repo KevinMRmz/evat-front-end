@@ -1,14 +1,14 @@
-import React, { useState } from "react";
-import Modal from "react-responsive-modal";
-import usePatientActions from "../../hooks/Actions/usePatientActions";
-import Modals from "../Modals";
+import usePatientContextActions from "../../api/patient-service/patient-actions";
 import { useNavigate } from "react-router-dom";
+import Modal from "react-responsive-modal";
+import React, { useState } from "react";
+import Modals from "../Modals";
 
 const PatientHeader = ({ id }) => {
   const [updateModal, setUpdateModal] = useState(false);
   const navigate = useNavigate();
 
-  const { deletePatientHome, deleteNurseId } = usePatientActions();
+  const { deletePatientHome, deleteNurseId } = usePatientContextActions();
 
   return (
     <div className="flex">

@@ -1,7 +1,7 @@
+import { usePatientActions } from "../../../api/patient-service/patient-actions";
 import StaffResultCard from "../../../components/ResultsCards/StaffResultCard";
 import StaffInfo from "../../../components/SinglePageComponents/StaffInfo";
 import GeneralComponents from "../../../components/GeneralComponents";
-import { usePatient } from "../../../hooks/Actions/usePatientActions";
 import useFetchData from "../../../hooks/useFetchData";
 import useFetch from "../../../hooks/useFetch";
 import { useParams } from "react-router-dom";
@@ -11,7 +11,7 @@ import Layouts from "../../../layouts";
 const AssignNurse = () => {
   const [employee, setEmployee] = useState({});
   const { getAllNurses } = useFetch();
-  const { setNurseId } = usePatient();
+  const { setNurseId } = usePatientActions();
   const { id } = useParams();
   const { data } = useFetchData(getAllNurses);
 

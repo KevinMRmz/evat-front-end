@@ -1,12 +1,12 @@
 import GeneralComponents from "../../../components/GeneralComponents";
-import { usePatient } from "../../../hooks/Actions/usePatientActions";
+import { usePatientActions } from "../../../api/patient-service/patient-actions";
 import { Titles } from "../../../constants/titles";
 import Layouts from "../../../layouts";
 import Forms from "../../../forms";
 import React from "react";
 
 const AddPatient = () => {
-  const { createPatient } = usePatient();
+  const { createPatient } = usePatientActions();
 
   return (
     <Layouts.AddUserLayout>

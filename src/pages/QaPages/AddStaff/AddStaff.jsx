@@ -1,12 +1,12 @@
+import { useEmployeeActions } from "../../../api/staff-service/staff-actions";
 import GeneralComponents from "../../../components/GeneralComponents";
-import { useEmployee } from "../../../hooks/Actions/useStaffActions";
 import { Titles } from "../../../constants/titles";
 import Layouts from "../../../layouts";
 import Forms from "../../../forms";
 import React from "react";
 
 const AddStaff = () => {
-  const { createEmployee } = useEmployee();
+  const { createEmployee } = useEmployeeActions();
 
   return (
     <Layouts.AddUserLayout>

@@ -1,4 +1,4 @@
-import { useEmployee } from "../../../hooks/Actions/useStaffActions";
+import { useEmployeeActions } from "../../../api/staff-service/staff-actions";
 import { Titles } from "../../../constants/titles";
 import Components from "../../../components";
 import { Link } from "react-router-dom";
@@ -6,7 +6,7 @@ import Layouts from "../../../layouts";
 import Forms from "../../../forms";
 
 const SearchStaff = () => {
-  const { searchEmployees, employees } = useEmployee();
+  const { searchEmployees, employees } = useEmployeeActions();
 
   return (
     <Layouts.SearchLayout
